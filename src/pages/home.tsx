@@ -10,7 +10,7 @@ import { ModalDetails } from "@/components/ModalDetails";
 import pokeapiLogo from 'assets/pokeapi_logo.png';
 
 export const Home = () => {
-  const { pokemonsFiltered, search, setSearch, changeTypeSelected } = useContext(PokemonContext);
+  const { pokemonsFiltered, search, setSearch } = useContext(PokemonContext);
   const { page, nextPage, previousPage, changePage } = usePagination();
 
   const perPage = 12;

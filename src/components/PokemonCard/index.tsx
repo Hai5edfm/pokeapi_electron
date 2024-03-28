@@ -1,6 +1,5 @@
 import { usePokemon } from "@/hooks/usePokemon";
-import { background } from "@/utils/constants/BackgroundsByType";
-import { Link } from "react-router-dom";
+import { PokeTypes, background } from "@/utils/constants/BackgroundsByType";
 import { Loader } from "../Loader";
 
 import styles from "./styles.module.scss";
@@ -15,7 +14,8 @@ export const PokemonCard = ({ url }: Props) => {
   const { pokemon } = usePokemon(url);
   const { setSelectedPokemon } = useContext(PokemonContext);
   
-  const backgroundSelected = background[pokemon?.types[0]?.type?.name ?? 'normal'];
+  const backgroundSelected = background[pokemon?.types[0]?.type?.name as PokeTypes ?? 'normal'];
+
 
   return (
     <div onClick={() => setSelectedPokemon(url)} className={styles.pokeCard}>

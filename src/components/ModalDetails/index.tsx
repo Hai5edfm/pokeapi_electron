@@ -2,7 +2,7 @@ import { type FC, Fragment, useContext } from "react"
 import { Dialog, Transition } from "@headlessui/react"
 import { usePokemon } from "@/hooks/usePokemon"
 import { PokemonContext } from "@/context/PokemonContext"
-import { background } from "@/utils/constants/BackgroundsByType"
+import { PokeTypes, background } from "@/utils/constants/BackgroundsByType"
 
 export const ModalDetails: FC = () => {
   const { selectedPokemon, setSelectedPokemon } = useContext(PokemonContext);
@@ -14,7 +14,8 @@ export const ModalDetails: FC = () => {
     setSelectedPokemon(null);
   }
   const isOpen = !!selectedPokemon;
-  const backgroundSelected = background[pokemon?.types[0]?.type?.name];
+  
+  const backgroundSelected = background[pokemon?.types[0]?.type?.name as PokeTypes ?? 'normal'];
 
   return (
     <Transition appear show={isOpen} as={Fragment}>

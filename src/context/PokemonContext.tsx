@@ -39,7 +39,8 @@ const PokemonProvider = ({ children }: Props) => {
   const [types, setTypes] = useState([defaultState]);
   const [filterSelected, setFilterSelected] = useState(defaultState);
 
-  const changeTypeSelected = async (type: PokeType) => {
+  const changeTypeSelected = async (type: PokeType | null) => {
+    if(!type) return;
     setFilterSelected(type);
 
     const { data } = await axios.get(type?.url ?? '');
